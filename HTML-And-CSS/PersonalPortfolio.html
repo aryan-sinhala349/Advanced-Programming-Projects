@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!-- The original webpage can be viewed at https://codepen.io/aryan-sinhala349/full/vYBwBBZ#welcome-section -->
+<html>
+  <head>
+    <title>Personal Portfolio</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Notable|Oswald|Oxygen|Source+Code+Pro&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        box-sizing: border-box;
+        font-size: 62.5%;
+        scroll-behavior: smooth;
+      }
+
+      @media (max-width: 75em) {
+        html {
+          font-size: 60%;
+        }
+      }
+
+      @media (max-width: 61.25em) {
+        html {
+          font-size: 58%;
+        }
+      }
+
+      @media (max-width: 28.75em) {
+        html {
+          font-size: 55%;
+        }
+      }
+
+      body {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 1.4;
+        color: #fafafa;
+        cursor: default;
+      }
+
+      h1, h2 {
+        font-weight: 700;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 6rem;
+        font-family: 'Notable', sans-serif;
+        padding: 3rem;
+      }
+
+      h2 {
+        font-size: 4.2rem;
+        font-family: 'Oswald', sans-serif;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      p {
+        font-family: 'Source Code Pro', monospace;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: flex-end;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #003166;
+        box-shadow: 0 10px 5px rgba(0, 0, 0, .25);
+        z-index: 10;
+      }
+
+      .nav-list {
+        display: flex;
+        margin-right: 2rem;
+      }
+
+      @media (max-width: 28.75em) {
+        .nav {
+          justify-content: center;
+        }
+
+        .nav-list {
+          margin: 0 1rem;
+        }
+      }
+
+      .nav-list a {
+        display: block;
+        font-size 2.2rem;
+        padding: 2rem;
+        color: #828282;
+        font-family: Oxygen, sans-serif;
+        text-transform: uppercase;
+        font-weight: bolder;
+        transition: color .2s ease-in-out;
+      }
+
+      .nav-list a:hover {
+        color: #fafafa;
+      }
+
+      .nav-list a:active {
+        color: #e52715;
+        transition: color .1s linear;
+      }
+
+      .welcome-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-color: #000;
+        background-image: linear-gradient(45deg, #00101f 0%, #0c0f13 100%);
+      }
+
+      .language:hover {
+        color: #e52715;
+        transition: color .2s ease-in-out;
+      }
+
+      #projects {
+        background: #e43a3a;
+      }
+
+      #projects-grid {
+        background: "#fafafa";
+        margin: 20px;
+      }
+
+      .projects-section {
+        text-align: center;
+        padding: 10rem 2rem;
+        background: "#fafafa";
+      }
+
+      .projects-section-header {
+        max-width: 640px;
+        margin: 0 auto 6rem auto;
+        text-transform: uppercase;
+        font-size: 6rem;
+      }
+
+      @media (max-width: 28.75em) {
+        .projects-section-header {
+          font-size: 4rem;
+        }
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-gap: 4rem;
+        max-width: 1280px;
+        margin: 0 auto;
+        margin-bottom: 6rem;
+      }
+
+      @media (max-width: 30.625em) {
+        .projects-section {
+          padding: 6rem 1rem;
+        }
+
+        .projects-grid {
+          grid-template-columns 1fr;
+        }
+      }
+
+      .project {
+        background: #5b5e7b;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .25);
+        border: 5px solid "#5b5e7b";
+        border-radius: 12px;
+        overflow: hidden;
+        color: #828282;
+        transition: color .2s ease-in-out;
+      }
+
+      .project:hover {
+        color: #fafafa;
+      }
+
+      .project:active {
+        color: #e52715;
+        transition: color .1s linear;
+      }
+
+
+      .project-image {
+        height: calc(100% - 6.8rem);
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .project-title {
+        font-size: 2rem;
+        padding: 2rem 0.5rem;
+        text-transform: uppercase;
+        font-weight: bolder;
+      }
+
+      .contact-section {
+        background: #253f5f;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+      }
+
+      .contact-section-header {
+        font-size: 6rem;
+      }
+
+      @media (max-width: 28.75em) {
+        .contact-section-header {
+          font-size: 4rem;
+        }
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 980rem;
+        margin-top: 4rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-details {
+        font-size: 2.4rem;
+        text-transform: uppercase;
+        color: #828282;
+      }
+
+      .contact-details p {
+        font-family: Oxygen, sans-serif;
+        font-weight: bolder;
+      }
+
+      .contact-details img {
+        height: 1em;
+      }
+
+      .contact-details:hover {
+        color: #fafafa;
+        background: #355a88;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="navbar" class="nav">
+      <ul class="nav-list">
+        <li><a href="#welcome-section">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main id="welcome-section" class="welcome-section">
+      <h1>Aryan Sinha</h1>
+      <p>A <span class="language">C#</span>, <span class="language">Java</span>, and <span class="language">HTML</span> developer</p>
+    </main>
+
+    <section id="projects" class="projects-section">
+      <h2 class="projects-section-header">Projects</h2>
+
+      <div class="projects-grid">
+        <a href="https://studio.code.org/projects/applab/1-dE9Gjq1w-SoHFHq3k_vhSWWwBV1bWT1vTYskLxBfM" target="_blank" class="project project-tile">
+          <img class="project-image" src="https://mwb.com/2019div/wp-content/uploads/code_logo_rgb.jpg" alt="project">
+          <p class="project-title">Digital Scene</p>
+        </a>
+
+        <a href="https://cdpn.io/aryan-sinhala349/full/WNePovN/yokZEOGgEYKA" target="_blank" class="project project-tile">
+          <img class="project-image" src="https://cdn.vox-cdn.com/thumbor/Dh93BqEj0zUKv0gR-wUu5w4UhPc=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/assets/2758985/Nintendo-Direct-2013-Satoru-Iwata-006.jpg" alt="project">
+          <p class="project-title">Tribute Page</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2 class="contact-section-header">Contact</h2>
+
+      <div class="contact-links">
+        <a href="mailto:aryananusinha@gmail.com" class="btn contact-details">
+          <i class="fas fa-at"></i><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/New_Logo_Gmail.svg/1280px-New_Logo_Gmail.svg.png" alt="Gmail Logo"> Email me!</p></a>
+        <a href="https://www.freecodecamp.org/aryan-sinhala349" id="profile-link" class="btn contact-details" target="_blank"><i class="fcc fc-ct"></i><p> <img src="https://s3.amazonaws.com/freecodecamp/curriculum-diagram-full.jpg" alt="freeCodeCamp logo"> My FCC Account!</p></a>
+        <a href="https://github.com/aryan-sinhala349" id="profile-link" class="btn contact-details" target="_blank"><i class="fg fg-gt"></i><p><img src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="GitHub Logo"> My GitHub!</p></a>
+    </section>
+  </body>
+</html>
