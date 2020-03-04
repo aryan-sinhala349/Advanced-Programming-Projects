@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace People
+{
+    class Person
+    {
+        protected string name;
+        protected int age;
+
+        protected static Exception empty = new Exception("The given name was empty!");
+        protected static Exception zero = new Exception("The given age was 0!");
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (value == "") throw empty;
+                name = value;
+            }
+        }
+
+        public int Age
+        {
+            get
+            {
+                return age;
+            }
+            set
+            {
+                if (value == 0) throw zero;
+                age = value;
+            }
+        }
+
+        public Person(string name = "Bob", int age = 10)
+        {
+            Name = name;
+            Age = age;
+        }
+
+        public void ShowInfo()
+        {
+            MessageBox.Show(Age.ToString(), name);
+        }
+    }
+
+    class Worker : Person
+    {
+        protected float income;
+
+        public float Income
+        {
+            get
+            {
+                return income;
+            }
+
+            set
+            {
+                if (value == 0) throw zero;
+                income = value;
+            }
+        }
+
+        public Worker(string name = "Bob", int age = 10, float income = 20000.00f) : base(name, age)
+        {
+            Income = income;
+        }
+
+        public new void ShowInfo()
+        {
+            MessageBox.Show("Aged " + Age + ", with a yearly income of $" + income, name);
+        }
+    }
+}
