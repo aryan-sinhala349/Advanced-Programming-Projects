@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -78,7 +78,48 @@ namespace People
 
         public new void ShowInfo()
         {
-            MessageBox.Show("Aged " + Age + ", with a yearly income of $" + income, name);
+            MessageBox.Show("Aged " + Age + ", with a yearly income of $" + Income, Name);
         }
+    }
+
+    class Politician : Worker, IPolitician
+    {
+        protected string party;
+
+        public string Party
+        {
+            get
+            {
+                return party;
+            }
+
+            set
+            {
+                if (value == "") throw empty;
+                party = value;
+            }
+        }
+
+        //The default party is the None party... because I don't want to reveal my political biases.
+        public Politician(string name = "Bob", int age = 30, float income = 20000.00f, string party = "None") : base(name, age, income)
+        {
+            Party = party;
+        }
+
+        public new void ShowInfo()
+        {
+            MessageBox.Show(Age + " years old, " + Party + " party, makes $" + Income, Name);
+        }
+
+        public void Advertise()
+        {
+            ShowInfo();
+            MessageBox.Show("Vote for " + Name + "!", Party + " Party Advertisement");
+        }
+    }
+
+    interface IPolitician
+    {
+        void Advertise();
     }
 }
